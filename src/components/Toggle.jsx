@@ -8,7 +8,7 @@ const Toggle = () => {
   };
 
   return (
-    <div>
+    <div style={{textAlign: "center", marginTop: "30px"}}>
       <h2>Toggle Button</h2>
 
       <button
