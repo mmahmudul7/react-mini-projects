@@ -1,4 +1,5 @@
 import "./App.css";
+import Calculator from "./components/Calculator";
 import ColorPickerCopy from "./components/ColorPickerCopy";
 import Counter from "./components/Counter";
 import DigitalClock from "./components/DigitalClock";
@@ -26,6 +27,9 @@ function App() {
         </div>
         <div>
           <DigitalClock />
+        </div>
+        <div>
+          <Calculator />
         </div>
       </div>
     </div>
