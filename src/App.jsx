@@ -1,13 +1,25 @@
 import "./App.css";
 import Counter from "./components/Counter";
+import Todo from "./components/Todo";
 import Toggle from "./components/Toggle";
 
 function App() {
   return (
     <div>
-      <h1 style={{textAlign: "center"}}>OneSix - React Mini Projects</h1>
-      <Counter />
-      <Toggle />
+      <h1 style={{textAlign: "center", color: "#22c55e"}}>
+        OneSix - React Mini Projects
+      </h1>
+      <div class="container">
+        <div>
+          <Counter />
+        </div>
+        <div>
+          <Toggle />
+        </div>
+        <div>
+          <Todo />
+        </div>
+      </div>
     </div>
   );
 }

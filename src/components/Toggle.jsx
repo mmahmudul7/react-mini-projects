@@ -3,16 +3,16 @@ import React, {useState} from "react";
 const Toggle = () => {
   const [isOn, setIsOn] = useState(false);
 
-  const handleToggle = () => {
-    setIsOn(!isOn);
-  };
+  //   const handleToggle = () => {
+  //     setIsOn(!isOn);
+  //   };
 
   return (
-    <div style={{textAlign: "center", marginTop: "30px"}}>
-      <h2>Toggle Button</h2>
+    <div>
+      <h2>2. Toggle Button</h2>
 
       <button
-        onClick={handleToggle}
+        onClick={() => setIsOn(!isOn)}
         style={{
           padding: "10px 20px",
           backgroundColor: isOn ? "green" : "red",

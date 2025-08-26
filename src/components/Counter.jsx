@@ -5,13 +5,20 @@ const Counter = () => {
 
   return (
     <div>
-      <h2>Counter App</h2>
+      <h2>1. Counter App</h2>
       <p>Count: {count}</p>
-      <button onClick={() => setCount(count + 1)}>Increase</button>
-      <button onClick={() => setCount(count - 1)} style={{marginLeft: "10px"}}>
-        Decrease
+      <button onClick={() => setCount(count - 1)}>- Decrease</button>
+      <button
+        onClick={() => setCount(count + 1)}
+        style={{marginLeft: "10px", marginRight: "10px"}}
+      >
+        + Increase
       </button>
-      <button onClick={() => setCount(0)} style={{marginLeft: "10px"}}>
+
+      <button
+        onClick={() => setCount(0)}
+        style={{background: "red", color: "white"}}
+      >
         Reset
       </button>
     </div>
