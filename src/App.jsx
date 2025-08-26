@@ -1,6 +1,7 @@
 import "./App.css";
 import ColorPickerCopy from "./components/ColorPickerCopy";
 import Counter from "./components/Counter";
+import DigitalClock from "./components/DigitalClock";
 import Todo from "./components/Todo";
 import Toggle from "./components/Toggle";
 
@@ -22,6 +23,9 @@ function App() {
         </div>
         <div>
           <ColorPickerCopy />
+        </div>
+        <div>
+          <DigitalClock />
         </div>
       </div>
     </div>
