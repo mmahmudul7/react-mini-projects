@@ -4,6 +4,7 @@ import ColorPickerCopy from "./components/ColorPickerCopy";
 import Counter from "./components/Counter";
 import DigitalClock from "./components/DigitalClock";
 import RandomQuote from "./components/RandomQuote";
+import TemperatureConverter from "./components/TemperatureConverter";
 import Todo from "./components/Todo";
 import Toggle from "./components/Toggle";
 
@@ -21,6 +22,7 @@ function App() {
         <DigitalClock />
         <Calculator />
         <RandomQuote />
+        <TemperatureConverter />
       </div>
     </div>
   );
