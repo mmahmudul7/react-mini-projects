@@ -13,7 +13,7 @@ const DigitalClock = () => {
 
   return (
     <div>
-      <h2>5. Digital Clock</h2>
+      <h2>Digital Clock</h2>
       <h3
         style={{
           textAlign: "center",

@@ -24,14 +24,19 @@ const Stopwatch = () => {
   };
 
   const formatTime = (t) => {
-    const seconds = Math.floor(t / 10);
+    const minutes = Math.floor(t / 600);
+    const seconds = Math.floor((t % 600) / 10);
     const ms = t % 10;
-    return `${seconds}.${ms} s`;
+
+    const minStr = String(minutes).padStart(2, "0");
+    const secStr = String(seconds).padStart(2, "0");
+
+    return `${minStr}:${secStr}.${ms}`;
   };
 
   return (
     <div>
-      <h2>9. Stopwatch</h2>
+      <h2>Stopwatch</h2>
       <h3>{formatTime(time)}</h3>
       <button onClick={startStop} style={{marginRight: "10px"}}>
         {isRunning ? "Pause" : "Start"}

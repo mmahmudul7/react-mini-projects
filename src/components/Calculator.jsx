@@ -31,7 +31,7 @@ const Calculator = () => {
 
   return (
     <div>
-      <h2>6. Simple Calculator</h2>
+      <h2>Simple Calculator</h2>
 
       <input
         type="number"

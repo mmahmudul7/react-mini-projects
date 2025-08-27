@@ -12,7 +12,7 @@ const TemperatureConverter = () => {
 
   return (
     <div>
-      <h2>8. Temperature Converter</h2>
+      <h2>Temperature Converter</h2>
       <input
         type="number"
         value={celsius}

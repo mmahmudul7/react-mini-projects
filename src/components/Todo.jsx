@@ -18,7 +18,7 @@ const Todo = () => {
 
   return (
     <div>
-      <h2>3.Todo List</h2>
+      <h2>Todo List</h2>
       <input
         type="text"
         value={task}

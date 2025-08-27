@@ -32,7 +32,7 @@ const RandomQuote = () => {
 
   return (
     <div>
-      <h2>7. Random Quote</h2>
+      <h2>Random Quote</h2>
       <button onClick={generateQuote}>Generate Quote</button>
       <button onClick={handleCopy} style={{marginLeft: "10px"}}>
         Copy Quote

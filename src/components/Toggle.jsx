@@ -9,7 +9,7 @@ const Toggle = () => {
 
   return (
     <div>
-      <h2>2. Toggle Button</h2>
+      <h2>Toggle Button</h2>
 
       <button
         onClick={() => setIsOn(!isOn)}

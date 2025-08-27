@@ -17,7 +17,7 @@ const ColorPickerCopy = () => {
 
   return (
     <div>
-      <h2>4. Color Picker & Copier</h2>
+      <h2>Color Picker & Copier</h2>
 
       <div style={{display: "flex", alignItems: "center", gap: "10px"}}>
         <input type="color" value={color} onChange={handleChange} />
