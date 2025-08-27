@@ -15,7 +15,7 @@ const quotes = [
 ];
 
 const RandomQuote = () => {
-  const [quote, setQuote] = useState("Click the button to see a quote!");
+  const [quote, setQuote] = useState("Click the 'Generate Quote' button!");
   const [copied, setCopied] = useState(false);
 
   const generateQuote = () => {

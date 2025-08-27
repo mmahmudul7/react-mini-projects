@@ -31,7 +31,10 @@ const Todo = () => {
       >
         Add
       </button>
-      <button onClick={resetTasks} style={{background: "red", color: "white"}}>
+      <button
+        onClick={resetTasks}
+        style={{background: "#C02B21", color: "white"}}
+      >
         Reset
       </button>
 

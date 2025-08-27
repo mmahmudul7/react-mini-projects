@@ -17,7 +17,7 @@ const Counter = () => {
 
       <button
         onClick={() => setCount(0)}
-        style={{background: "red", color: "white"}}
+        style={{background: "#C02B21", color: "white"}}
       >
         Reset
       </button>

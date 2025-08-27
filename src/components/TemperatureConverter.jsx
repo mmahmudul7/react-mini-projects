@@ -17,7 +17,6 @@ const TemperatureConverter = () => {
         type="number"
         value={celsius}
         onChange={(e) => setCelsius(e.target.value)}
-        // placeholder="Celsius"
       />
       {"° "}
       <span>Celsius</span>

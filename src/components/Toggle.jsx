@@ -15,7 +15,7 @@ const Toggle = () => {
         onClick={() => setIsOn(!isOn)}
         style={{
           padding: "10px 20px",
-          backgroundColor: isOn ? "green" : "red",
+          backgroundColor: isOn ? "#22c55e" : "#C02B21",
           color: "white",
           border: "none",
           borderRadius: "5px",

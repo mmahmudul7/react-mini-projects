@@ -20,7 +20,7 @@ const DigitalClock = () => {
           background: "white",
           borderRadius: "8px",
           padding: "10px",
-          margin: "0px 110px",
+          margin: "5px 100px",
         }}
       >
         {time.toLocaleTimeString()}
