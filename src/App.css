@@ -1,98 +1,117 @@
+#root {
+  max-width: 1440px;
+  margin: auto;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
 /* Layout */
 .app-container {
   display: flex;
-  height: 100vh;
+  min-height: 100vh;
   font-family: sans-serif;
 }
 
 /* Sidebar */
 .sidebar {
-  width: 220px;
+  width: 200px;
   background-color: #1e3a8a;
-  color: #ffffff;
   padding: 15px;
+  color: white;
   overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  border-right: 2px solid #3b82f6;
+  transition: transform 0.3s ease;
 }
 
-.sidebar h2 {
-  margin: 0 0 10px 0;
-  color: #22c55e;
+.sidebar.open {
+  transform: translateX(0);
 }
 
 .sidebar input {
-  max-width: 220px;
+  width: 95%;
   padding: 5px;
+  margin-bottom: 10px;
   border-radius: 4px;
   border: none;
-  margin-bottom: 10px;
 }
 
 .sidebar button {
-  padding: 8px 10px;
-  background: transparent;
-  border: none;
+  display: block;
+  width: 100%;
+  margin-bottom: 5px;
+  padding: 8px;
   text-align: left;
+  border: none;
+  border-radius: 4px;
+  background-color: #3b82f6;
   color: white;
   cursor: pointer;
-  border-radius: 4px;
-  transition: background 0.2s;
 }
 
 .sidebar button:hover,
 .sidebar button.active {
   background-color: #22c55e;
-  color: #1e3a8a;
 }
 
 /* Main content */
 .main-content {
   flex: 1;
-  padding: 20px;
-  overflow-y: auto;
-  background-color: #f3f4f6;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+  padding: 0 15px;
+  background-color: #ffffff;
+  position: relative;
 }
 
-/* Grid of projects */
+/* Hamburger button */
+.hamburger {
+  display: none;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Grid */
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 15px;
 }
 
 .project-card {
-  background-color: #f3f4f6;
-  padding: 10px;
-  border-radius: 8px;
+  background-color: #f2f2f2;
   border: 1px solid #3b82f6;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+/* Highlight selected app in grid */
+.project-card.highlight {
+  border: 2px solid #22c55e;
+  box-shadow: 0 0 10px #22c55e66;
 }
 
 /* Pagination */
 .pagination {
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-  margin: 20px 0;
+  margin-top: 30px;
+  text-align: center;
 }
 
 .pagination button {
-  padding: 6px 12px;
-  border: none;
+  margin: 0 5px;
+  padding: 5px 10px;
   border-radius: 4px;
+  border: none;
   cursor: pointer;
-  background-color: #1e3a8a;
-  color: white;
 }
 
 .pagination button.active {
   background-color: #22c55e;
-  color: #1e3a8a;
+  color: white;
 }
 
 .pagination button:disabled {
@@ -100,8 +119,8 @@
   cursor: not-allowed;
 }
 
-input {
-  max-width: 140px;
+.project-card input {
+  max-width: 120px;
 }
 
 h2 {
@@ -109,31 +128,65 @@ h2 {
 }
 
 /* Responsive */
+
+/* Tablet (max-width 900px) */
 @media (max-width: 900px) {
-  .app-container {
-    flex-direction: column;
-  }
   .projects-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr 1fr;
   }
+
   .sidebar {
-    width: 100%;
-    flex-direction: row;
-    flex-wrap: wrap;
-    border-right: none;
-    border-bottom: 2px solid #3b82f6;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 220px;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    z-index: 1000;
   }
-  .sidebar button {
-    flex: 1 1 150px;
-    margin: 2px;
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  .hamburger {
+    display: block;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    font-size: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1100;
   }
 }
 
+/* Mobile (max-width 600px) */
 @media (max-width: 600px) {
   .projects-grid {
     grid-template-columns: 1fr;
   }
-  .sidebar button {
-    flex: 1 1 100%;
+
+  .app-container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    transform: translateX(-100%);
+    z-index: 1000;
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  .hamburger {
+    display: block;
   }
 }

@@ -1,4 +1,4 @@
-import React, {useState, Suspense} from "react";
+import React, {useState, useEffect, Suspense} from "react";
 import "./App.css";
 
 // Dynamic import all components
@@ -13,23 +13,28 @@ const ITEMS_PER_PAGE = 9;
 function App() {
   const [search, setSearch] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
+  const [highlightApp, setHighlightApp] = useState(null);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
-  // Last opened project from localStorage
-  const lastProjectName = localStorage.getItem("lastProject");
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const appName = params.get("app");
+
+    if (appName) {
+      setHighlightApp(appName);
+
+      const index = projects.findIndex((p) => p.name === appName);
+      if (index !== -1) {
+        const page = Math.ceil((index + 1) / ITEMS_PER_PAGE);
+        setCurrentPage(page);
+      }
+    }
+  }, []);
 
   // Filter projects by search
-  let filteredProjects = projects.filter((p) =>
+  const filteredProjects = projects.filter((p) =>
     p.name.toLowerCase().includes(search.toLowerCase())
   );
-
-  // If last project exists, move it to first position
-  if (lastProjectName) {
-    const index = filteredProjects.findIndex((p) => p.name === lastProjectName);
-    if (index > -1) {
-      const [last] = filteredProjects.splice(index, 1);
-      filteredProjects.unshift(last);
-    }
-  }
 
   // Pagination
   const totalPages = Math.ceil(filteredProjects.length / ITEMS_PER_PAGE);
@@ -42,10 +47,25 @@ function App() {
     if (page >= 1 && page <= totalPages) setCurrentPage(page);
   };
 
+  // Sidebar click
+  const handleSidebarClick = (name, index) => {
+    const page = Math.ceil((index + 1) / ITEMS_PER_PAGE);
+    setCurrentPage(page);
+    setHighlightApp(name);
+
+    const params = new URLSearchParams(window.location.search);
+    params.set("app", name);
+    window.history.replaceState(
+      {},
+      "",
+      `${window.location.pathname}?${params}`
+    );
+  };
+
   return (
     <div className="app-container">
       {/* Sidebar */}
-      <aside className="sidebar">
+      <aside className={`sidebar ${sidebarOpen ? "open" : ""}`}>
         <h2>Mini Projects</h2>
         <input
           type="text"
@@ -56,29 +76,46 @@ function App() {
             setCurrentPage(1);
           }}
         />
-        {filteredProjects.map((p, i) => (
-          <button
-            key={i}
-            className={p.name === currentProjects[0]?.name ? "active" : ""}
-            onClick={() => {
-              setCurrentPage(Math.ceil((i + 1) / ITEMS_PER_PAGE));
-              localStorage.setItem("lastProject", p.name); // Save last opened project
-            }}
-          >
-            {p.name}
-          </button>
-        ))}
+        <div className="sidebar-list">
+          {filteredProjects.map((p, i) => (
+            <button
+              key={i}
+              className={p.name === highlightApp ? "active" : ""}
+              onClick={() => handleSidebarClick(p.name, i)}
+            >
+              {p.name}
+            </button>
+          ))}
+        </div>
       </aside>
 
       {/* Main content */}
-      <main className="main-content">
+      <main
+        className="main-content"
+        onClick={() => {
+          if (sidebarOpen && window.innerWidth <= 900) setSidebarOpen(false);
+        }}
+      >
+        {/* Hamburger Button */}
+        <button
+          className="hamburger"
+          onClick={() => setSidebarOpen(!sidebarOpen)}
+        >
+          ☰
+        </button>
+
         <h1 style={{color: "#22c55e", textAlign: "center"}}>
           OneSix - React Mini Projects
         </h1>
         <div className="projects-grid">
           <Suspense fallback={<div>Loading...</div>}>
             {currentProjects.map((p) => (
-              <div key={p.name} className="project-card">
+              <div
+                key={p.name}
+                className={`project-card ${
+                  p.name === highlightApp ? "highlight" : ""
+                }`}
+              >
                 <p.component />
               </div>
             ))}
